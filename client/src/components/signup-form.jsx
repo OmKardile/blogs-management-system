@@ -59,6 +59,18 @@ export function SimpleRegistrationForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
+            Your Number
+          </Typography>
+          <Input
+            size="lg"
+            placeholder="phone number"
+            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            labelProps={{
+              className: "before:content-none after:content-none",
+            }}
+            onChange={(e) => setMobile(e.target.value)}
+          />
+          <Typography variant="h6" color="blue-gray" className="-mb-3">
             Password
           </Typography>
           <Input
@@ -69,7 +81,7 @@ export function SimpleRegistrationForm() {
             labelProps={{
               className: "before:content-none after:content-none",
             }}
-            onChange={(e) => setMobile(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <Checkbox
