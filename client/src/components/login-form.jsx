@@ -13,7 +13,7 @@ export function SimpleLoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const signup = async () => {
+  const signin = async () => {
     //to-do  -> check for the validations if user have entered the data in the input fields
     const result = await registerUser(name, email, password, mobile);
     if (result.status == "success") {
@@ -25,7 +25,7 @@ export function SimpleLoginForm() {
   return (
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
-        Join Food Court Now ...!
+        Join Blogging Now ...!
       </Typography>
       <Typography color="gray" className="mt-1 font-normal">
         Nice to meet you! Enter your details to register.
@@ -47,6 +47,7 @@ export function SimpleLoginForm() {
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Password
           </Typography>
+
           <Input
             type="password"
             size="lg"
@@ -55,7 +56,7 @@ export function SimpleLoginForm() {
             labelProps={{
               className: "before:content-none after:content-none",
             }}
-            onChange={(e) => setMobile(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <Checkbox
@@ -76,7 +77,7 @@ export function SimpleLoginForm() {
           }
           containerProps={{ className: "-ml-2.5" }}
         />
-        <Button className="mt-6" fullWidth onClick={signup}>
+        <Button className="mt-6" fullWidth onClick={signin}>
           sign In
         </Button>
 
