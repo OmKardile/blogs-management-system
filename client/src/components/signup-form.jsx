@@ -7,6 +7,8 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { registerUser } from "../services/user.js";
+import { toast } from "react-toastify";
 
 export function SimpleRegistrationForm() {
   const navigate = useNavigate();
@@ -20,14 +22,14 @@ export function SimpleRegistrationForm() {
     const result = await registerUser(name, email, password, mobile);
     if (result.status == "success") {
       toast.success("Signup Successful");
-      navigate("/");
+      navigate("/home");
     } else toast.error(result.error);
   };
 
   return (
-    <Card color="transparent" shadow={false}>
+    <Card color="transparent" shadow={false} className="m-5 mt-28 ">
       <Typography variant="h4" color="blue-gray">
-        Welcome to Blog Management ...!
+        Join Blogging Now ...!
       </Typography>
       <Typography color="gray" className="mt-1 font-normal">
         Nice to meet you! Enter your details to register.
@@ -39,7 +41,7 @@ export function SimpleRegistrationForm() {
           </Typography>
           <Input
             size="lg"
-            placeholder="name@mail.com"
+            placeholder="Your full name"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -63,7 +65,7 @@ export function SimpleRegistrationForm() {
           </Typography>
           <Input
             size="lg"
-            placeholder="phone number"
+            placeholder="number"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -102,7 +104,7 @@ export function SimpleRegistrationForm() {
           }
           containerProps={{ className: "-ml-2.5" }}
         />
-        <Button className="mt-6" fullWidth onClick={signup}>
+        <Button onClick={signup} className="mt-6" fullWidth>
           sign up
         </Button>
 

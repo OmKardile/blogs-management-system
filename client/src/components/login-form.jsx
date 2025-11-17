@@ -7,6 +7,8 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { loginUser } from "../services/user.js";
+import { toast } from "react-toastify";
 
 export function SimpleLoginForm() {
   const navigate = useNavigate();
@@ -14,21 +16,27 @@ export function SimpleLoginForm() {
   const [password, setPassword] = useState("");
 
   const signin = async () => {
-    //to-do  -> check for the validations if user have entered the data in the input fields
-    const result = await registerUser(name, email, password, mobile);
-    if (result.status == "success") {
-      toast.success("Signup Successful");
-      navigate("/");
-    } else toast.error(result.error);
+    console.log(email);
+    console.log(password);
+    try {
+      const result = await loginUser(email, password);
+      console.log(result);
+      if (result.status == "success") {
+        toast.success("Login Successful");
+        navigate("/home/");
+      } else toast.error(result.error);
+    } catch (ex) {
+      console.log(ex);
+    }
   };
 
   return (
-    <Card color="transparent" shadow={false}>
+    <Card color="transparent" shadow={false} className="m-5 mt-36 ">
       <Typography variant="h4" color="blue-gray">
-        Join Blogging Now ...!
+        Welcome Back Blogger ...!
       </Typography>
       <Typography color="gray" className="mt-1 font-normal">
-        Nice to meet you! Enter your details to register.
+        Enter your details to Log In.
       </Typography>
       <div className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
         <div className="mb-1 flex flex-col gap-6">

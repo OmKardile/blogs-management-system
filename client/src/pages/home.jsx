@@ -17,7 +17,7 @@ export default function Home() {
 
       <div>
         Footer (HardCodedForNow)--
-        <div>
+        <div className="footer">
           <Stats />
         </div>
       </div>
